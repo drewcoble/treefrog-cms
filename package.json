@@ -11,12 +11,12 @@
     "type": "git",
     "url": "git+https://github.com/TShelton41/treefrog-cms.git"
   },
-  "author": "Todd Shelton",
+  "author": "Drew Coble",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TShelton41/treefrog-cms/issues"
+    "url": "https://github.com/drewcoble/treefrog-cms/issues"
   },
-  "homepage": "https://github.com/TShelton41/treefrog-cms#readme",
+  "homepage": "https://github.com/drewcoble/treefrog-cms#readme",
   "devDependencies": {
     "firebase-tools": "^7.12.1",
     "jquery": "^3.4.1",
