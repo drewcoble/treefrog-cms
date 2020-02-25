@@ -65,6 +65,8 @@ function hideQuillEditor() {
   $(".ql-toolbar").css("display", "none");
 }
 
+var nameArray = [];
+
 function addModalButtonListeners() {
   $("#createMNButton").click(function(e) {
     console.log("createMNButton clicked");
@@ -74,12 +76,10 @@ function addModalButtonListeners() {
       .toLowerCase(); //make the value lower case
 
     //check to see that input is NOT blank
-    if (inputContent.length > 0) {
-      // console.log(inputContent);
-      //ASSUME THIS IS NOT A DUPLICATE ENTRY FOR NOW
-      //if input is NOT blank AND this is not a duplicate value... Generate next page by passing name value to service.js
+    if (inputContent.length > 0 && !nameArray.includes(inputContent)) {
       //hide the modal
       $(".modal").css("display", "none");
+      nameArray.push(inputContent);
       //display the new page content
       $(".text-wrapper").html(
         TREEFROG_SERVICE.getNewPageInfoContent(inputContent)
@@ -94,7 +94,7 @@ function addModalButtonListeners() {
       //executes if input is blank
       console.log("no content in input");
       //show alert w/ error for blank input
-      alert("ERROR! You must fill in the 'Main Nav Name' input");
+      alert("ERROR! Try a different name.");
     }
   });
 
