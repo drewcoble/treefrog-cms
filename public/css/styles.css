@@ -17,16 +17,29 @@ h6,
 p {
   margin-bottom: 16px; }
 
+#quillEditor {
+  display: none;
+  margin-bottom: 50px; }
+
 .btn {
   border-radius: 10px;
   height: 50px;
   padding: 20px 50px;
   font-weight: bold;
-  cursor: pointer; }
+  cursor: pointer;
+  margin-right: 20px; }
 
 .btn-dark {
   background-color: #393c40;
   color: #f2f2f2; }
+
+.btn-light {
+  background-color: #f2dcc9;
+  color: #393c40;
+  padding-top: 15px; }
+
+.mainNavName {
+  text-transform: capitalize; }
 
 .modal {
   position: fixed;
@@ -34,14 +47,55 @@ p {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(242, 242, 242, 0.5);
   display: none; }
+  .modal .click-box {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(242, 242, 242, 0.5);
+    position: absolute; }
+    .modal .click-box .closeX {
+      position: absolute;
+      font-size: 50px;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      color: #f2f2f2;
+      background-color: #393c40;
+      border-radius: 60px;
+      height: 60px;
+      width: 60px;
+      text-align: center; }
   .modal .alert-box {
+    position: relative;
+    z-index: 99;
     width: 600px;
     height: 350px;
     background-color: #393c40;
+    color: #f2f2f2;
     margin: auto;
-    border-radius: 10px; }
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px; }
+    .modal .alert-box h2 {
+      color: #f2f2f2;
+      text-align: center; }
+    .modal .alert-box .modalInputContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; }
+      .modal .alert-box .modalInputContainer input {
+        height: 30px;
+        border-radius: 10px;
+        border: none;
+        text-align: center; }
+    .modal .alert-box .buttonHolder {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly; }
 
 .nav {
   position: fixed;
@@ -57,7 +111,8 @@ p {
     align-items: center; }
     .nav .left-nav-holder .link-holder {
       height: 100%;
-      position: relative; }
+      position: relative;
+      cursor: pointer; }
       .nav .left-nav-holder .link-holder a {
         margin-top: 31px;
         color: #f2f2f2;
@@ -87,5 +142,5 @@ p {
   color: #393c40;
   padding: 110px 30px 30px 30px; }
   .content-wrapper .text-wrapper {
-    width: 30%;
+    width: 50%;
     margin-bottom: 40px; }
