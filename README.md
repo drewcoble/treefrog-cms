@@ -1,7 +1,7 @@
 ### Link to homeworks, hosted on web 4 server
 HW4: https://in-info-web4.informatics.iupui.edu/~ancoble/N315/homework4/public/  
-HW5: https://in-info-web4.informatics.iupui.edu/~ancoble/N315/homework5/public/addSave.html  
-HW6: https://in-info-web4.informatics.iupui.edu/~ancoble/N315/homework6/public/addSave.html
+HW5: https://in-info-web4.informatics.iupui.edu/~ancoble/N315/homework5/public/  
+HW6: https://in-info-web4.informatics.iupui.edu/~ancoble/N315/homework6/public/
   
 # Treefrog CMS
 
