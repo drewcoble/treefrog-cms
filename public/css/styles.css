@@ -19,7 +19,8 @@ p {
 
 #quillEditor {
   display: none;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  z-index: 98; }
 
 .btn {
   border-radius: 10px;
@@ -102,7 +103,8 @@ p {
   height: 80px;
   width: 100%;
   background-color: #393c40;
-  display: flex; }
+  display: flex;
+  z-index: 99; }
   .nav .left-nav-holder {
     width: 80%;
     height: 100%;
@@ -144,3 +146,15 @@ p {
   .content-wrapper .text-wrapper {
     width: 50%;
     margin-bottom: 40px; }
+
+.ql-editor {
+  min-height: 200px; }
+
+#htmlContainer {
+  margin-top: 50px; }
+
+.ql-align-center {
+  text-align: center; }
+
+.ql-align-right {
+  text-align: right; }

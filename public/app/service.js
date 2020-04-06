@@ -1,4 +1,88 @@
 var TREEFROG_SERVICE = (function() {
+  document.addEventListener("DOMContentLoaded", function() {
+    // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+    // // The Firebase SDK is initialized and available here!
+    // // firebase.auth().onAuthStateChanged(user => {});
+    // firebase
+    // .database()
+    // .ref('/contacts')
+    // .on('value', snapshot => {});
+    // firebase.firestore().collection('contacts');
+    // firebase.messaging().requestPermission().then(() => { });
+    // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+    // // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+    try {
+      let app = firebase.app();
+      let features = ["auth", "database", "messaging", "storage"].filter(
+        feature => typeof app[feature] === "function"
+      );
+      // document.getElementById('load');
+    } catch (e) {
+      console.error(e);
+    }
+  });
+
+  var _db;
+
+  var _initFirebase = function() {
+    firebase
+      .auth()
+      .signInAnonymously()
+      .then(function(result) {
+        console.log("connected");
+        _db = firebase.firestore();
+      });
+  };
+
+  var _addContact = function() {
+    let data = { fName: "Michael", lName: "McDonald" };
+    _db
+      .collection("contacts")
+      .add(data)
+      .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+        _saveData();
+      })
+      .catch(function(error) {
+        console.error("Error adding document: ", error);
+      });
+  };
+
+  var _saveData = function(pageData) {
+    //gets the 'collection' named contacts from firestore
+    _db
+      .collection("Pages")
+      .add(editorContent)
+      .then(function(querySnapshot) {
+        // then grabs the data from the collection
+        querySnapshot.forEach(function(doc) {
+          // clone template row and append to table body
+          // var tr = tempTr.clone();
+          // tr.data('id', doc.id);
+          console.log("id", doc.id);
+          var id = doc.id;
+          var data = doc.data();
+          // set cell values from Contact data
+          console.log("data", data);
+        });
+      });
+  };
+
+  var _checkMainNavName = function(mainNavName, callback) {
+    _db
+      .collection("Pages")
+      .get()
+      .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+          if (querySnapshot.empty) {
+            console.log("qS empty");
+            callback(mainNavName);
+          }
+          console.log("got a match: ", doc.id, " => ", doc.data());
+        });
+      });
+  };
+
   var _getGetStartedContent = function() {
     let contentStr = `<h1>Treefrog CMS</h1>
     <p>This is the screen where you will create your navigation and page content.</p>
@@ -47,12 +131,6 @@ var TREEFROG_SERVICE = (function() {
     return modalContent;
   };
 
-  var _getEmptyInputModalMessage = function() {
-    let modalContent = `<h2 class='errorHeading'>Error!</h2>
-    <p>Your Main Nav Name Cannot Be Blank.<br>Please add a value in the input field and try again.</p>`;
-    return modalContent;
-  };
-
   var _getNewPageInfoContent = function(newPageName) {
     let newPageInfoContent = `<h1>Treefrog CMS</h1>
     <p>Now you have your navigation set now you can create your content. Below you will see your navigation name and a text editor. Create your content in the text editor and then click on "Save Page Info". Once you have done that click on "PREVIEW SITE" to see what your web page looks like.</p>
@@ -73,6 +151,8 @@ var TREEFROG_SERVICE = (function() {
     getAddMainNavModalContent: _getAddMainNavModalContent,
     getNewPageInfoContent: _getNewPageInfoContent,
     getNewPageInfoButton: _getNewPageInfoButton,
-    getEmptyInputModalMessage: _getEmptyInputModalMessage
+    initFirebase: _initFirebase,
+    checkMainNavName: _checkMainNavName,
+    saveData: _saveData
   };
 })();
